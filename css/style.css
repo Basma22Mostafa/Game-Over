@@ -1,0 +1,82 @@
+:root{
+    --main-color: #272b30;
+    --seconde-color: #32383e;
+    --color-text: #fff;
+    --btn-main-color: #272729;
+}
+body{
+    background-color: var(--main-color);
+    font-family: "Comfortaa", cursive;
+    color: #fff;
+
+}
+header .bg-img{
+    background-image: url(../imgs/wraper.png);
+    background-size: cover;
+    background-position: center;
+    height: 30% !important;
+    
+}
+nav{
+    background-color: rgb(58, 73, 123) !important;
+    margin-inline: auto;
+    margin-top: -20px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgb(0 0 0 / 0.7); 
+    left: 120;
+    top: 0;
+    z-index: 2;
+}
+nav .logo{
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+nav .nav-item .active,.nav-item .nav-link:hover {
+   color: #09c !important;
+    transition: color 0.5s;
+}
+nav .nav-item a{
+    color: white;
+    font-size: 13px ;
+}
+.games .card{
+    background-color: var(--main-color) !important;
+    transition: .5s;
+    
+}
+.games .free-btn{
+    /* background-color:rgb(102, 102, 102) !important ; */
+    background-color: rgb(58, 73, 123) !important;
+}
+
+.games .card:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.games .card-img-top{
+    transition: .2s;
+}
+.games .card:hover .card-img-top{
+    opacity: 1 !important;
+}
+.games .card:hover .free-btn{
+    background-color: #0d6efd !important;
+}
+.games .card-link{
+     background-color:rgb(82, 80, 80) !important ;
+}
+
+#closeIcon{
+    font-size: 20px;
+    margin-top: -40px;
+}
+#description{
+    font-size: 13px;
+    font-weight: 700;
+}
+.right-details span{
+    font-size: 12px;
+    font-weight: bolder;
+}
