@@ -31,47 +31,75 @@ export default class UI {
         document.querySelector('#displaygames').innerHTML=cartoona;
 
         let cardImgs=document.querySelectorAll(".card-img-top");
-        for(let i=0;i<cardImgs.length;i++){
-            cardImgs[i].addEventListener("click",function(e){
-                let gid=e.target.getAttribute("gid")
-                details.getGameById(gid);
+        let self=this
+        // for(let i=0;i<cardImgs.length;i++){
+        //     cardImgs[i].addEventListener("click", async function(e){
+        //         let gid= e.target.getAttribute("gid")
+        //         let game= await details.getGameById(gid);
+                
+        //         self.displayDetails(game);
 
-            })
-        }
+        //     })
+        // }
+        cardImgs.forEach(card=>{
+          card.addEventListener("click",async function() {
+             let gid= card.getAttribute("gid");
+             let game= await details.getGameById(gid);
+             self.displayDetails(game);
+            
+          })
+        })
     }
     
 
     displayDetails(game){
         let cartoona2="";
-        for(let i=0;i<game.length;i++){
             cartoona2+=`
-            <div class="col-md-4">
+            <div class="col-lg-4 col-md-12">
         <div class="left-details">
           <h2>Details Game</h2>
           
-          <img src=${game[i].thumbnail} class="mt-2" alt="">
+          <img src=${game.thumbnail} class="mt-2" alt="">
         </div>
       </div>
-      <div class="col-md-8 py-5">
+      <div class="col-lg-8 col-md-12 py-5">
         <div class="right-details d-flex justify-content-between">
           <div>
-          <h3 class="fw-bolder">Title: ${game[i].title}</h3>
-          <h4 class="fs-6 my-3">Category: <span  class="bg-info text-dark   p-2 rounded-2">${game[i].genre}</span></h4>
-          <h4 class="fs-6 my-3">Platform: <span class="bg-info text-dark  p-2 rounded-2">${game[i].platform}</span></h4>
-          <h4 class="fs-6 my-3">Status: <span class="bg-info text-dark p-2 rounded-2">${game[i].status}</span></h4>
-          <p id="description">${game[i].description}</p>
+          <h3 class="fw-bolder">Title: ${game.title}</h3>
+          <h4 class="fs-6 my-3">Category: <span  class="bg-info text-dark   p-2 rounded-2">${game.genre}</span></h4>
+          <h4 class="fs-6 my-3">Platform: <span class="bg-info text-dark  p-2 rounded-2">${game.platform}</span></h4>
+          <h4 class="fs-6 my-3">Status: <span class="bg-info text-dark p-2 rounded-2">${game.status}</span></h4>
+          <p id="description">${game.description}</p>
           <button class="btn btn-outline-warning text-light fw-bold ">Show Game</button>
           </div>
           <i class="fa-solid fa-xmark" id="closeIcon" style="cursor: pointer;"></i>
         </div>
       </div>
             `
-        }
+        
         document.querySelector(".details").classList.remove("d-none");
         document.querySelector(".games").classList.add("d-none");
+        document.querySelector("nav").classList.add("d-none");
+        document.querySelector("header").classList.add("d-none");
         document.getElementById("dispGameDetails").innerHTML=cartoona2;
+
+        let closeIcon=document.getElementById("closeIcon");
+        function close(){
+            document.querySelector(".details").classList.add("d-none");
+          document.querySelector(".games").classList.remove("d-none");
+          document.querySelector("nav").classList.remove("d-none");
+          document.querySelector("header").classList.remove("d-none");
+          }
+        closeIcon.addEventListener("click",close);
+
+    document.body.addEventListener("keydown",function(e){
+    if((e.key=="Escape")){
+        close();
+    }
+})
         
     }
+    
 }
 
 

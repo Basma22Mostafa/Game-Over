@@ -1,5 +1,4 @@
-// import UI from "./UI.js";
-// let gameDetails =new UI();
+
 export class Details {
     async getGameById(gid){
          const options = {
@@ -10,8 +9,8 @@ export class Details {
 	    }
         };
         let res=await fetch("https://free-to-play-games-database.p.rapidapi.com/api/game?id="+gid,options);
-        res= await res.json();
+        let data= await res.json();
+        return data;
        
-        // gameDetails.displayDetails(res);
     }
 }
